@@ -168,12 +168,12 @@ let myEnemy = sprites.create(img`
 myEnemy.setVelocity(-100, -100)
 myEnemy.setPosition(12, 10)
 mySprite.setVelocity(100, 100)
-controller.player1.moveSprite(mySprite, 100, 100)
-if (mySprite.overlapsWith(myEnemy)) {
-    info.changeLifeBy(-1)
-}
 mySprite.setBounceOnWall(true)
 myEnemy.setBounceOnWall(true)
+controller.player1.moveSprite(mySprite, 100, 100)
 forever(function () {
-    myEnemy.follow(mySprite)
+    myEnemy.follow(mySprite, 50)
+    if (mySprite.overlapsWith(myEnemy)) {
+        info.changeLifeBy(-1)
+    }
 })
